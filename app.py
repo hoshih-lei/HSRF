@@ -13,7 +13,6 @@ st.set_page_config(
     layout="wide"
 )
 
-
 def check_versions():
     info = []
     info.append(f"Python version: {sys.version}")
@@ -29,15 +28,23 @@ def check_versions():
     
     return info
 
-
 @st.cache_resource
 def load_resources():
     try:
+        # 尝试使用不同的方法加载模型
         model = joblib.load('hydrogel_k_predictor.pkl')
         st.success("✅ Model loaded successfully")
     except Exception as e:
         st.error(f"❌ Model loading failed: {str(e)}")
-        return None, None
+        # 尝试其他加载方法
+        try:
+            import pickle
+            with open('hydrogel_k_predictor.pkl', 'rb') as f:
+                model = pickle.load(f)
+            st.success("✅ Model loaded using pickle")
+        except Exception as e2:
+            st.error(f"❌ Both methods failed: {str(e2)}")
+            return None, None
     
     try:
         with open('feature_config.json', 'r') as f:
@@ -49,13 +56,11 @@ def load_resources():
     
     return model, config
 
-
 with st.sidebar:
     st.subheader("System Information")
     versions = check_versions()
     for v in versions:
         st.text(v)
-
 
 st.title("📈 HSRF First-order Kinetic Rate Constant (K) Predictor")
 
@@ -63,7 +68,6 @@ model, config = load_resources()
 
 if model is None or config is None:
     st.stop()
-
 
 left_col, right_col = st.columns([0.7, 0.3])
 
@@ -93,11 +97,12 @@ with left_col:
     for i, feature in enumerate(num_features1):
         with num_cols1[i]:
             range_info = config.get('numeric_ranges', {}).get(feature, {'min': 0, 'max': 100})
+            default_val = float((range_info.get('min', 0) + range_info.get('max', 100)) / 2)
             input_data[feature] = st.number_input(
-                f"{feature}\nRange: {range_info.get('min', 0):.2f} ~ {range_info.get('max', 100):.2f}",
+                f"{feature}\nRange: {range_info.get('min', 0):.2f} ～ {range_info.get('max', 100):.2f}",
                 min_value=float(range_info.get('min', 0)),
                 max_value=float(range_info.get('max', 100)),
-                value=float((range_info.get('min', 0) + range_info.get('max', 100)) / 2),
+                value=default_val,
                 step=0.1,
                 key=f"num_{feature}"
             )
@@ -108,11 +113,12 @@ with left_col:
     for i, feature in enumerate(num_features2):
         with num_cols2[i]:
             range_info = config.get('numeric_ranges', {}).get(feature, {'min': 0, 'max': 100})
+            default_val = float((range_info.get('min', 0) + range_info.get('max', 100)) / 2)
             input_data[feature] = st.number_input(
-                f"{feature}\nRange: {range_info.get('min', 0):.2f} ~ {range_info.get('max', 100):.2f}",
+                f"{feature}\nRange: {range_info.get('min', 0):.2f} ～ {range_info.get('max', 100):.2f}",
                 min_value=float(range_info.get('min', 0)),
                 max_value=float(range_info.get('max', 100)),
-                value=float((range_info.get('min', 0) + range_info.get('max', 100)) / 2),
+                value=default_val,
                 step=0.1,
                 key=f"num_{feature}"
             )
