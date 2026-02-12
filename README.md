@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-The Hydrogel Release Rate Prediction Tool is a Python-based desktop application designed to predict the release rate constant (K h⁻¹) of hydrogels. Utilizing a machine learning model (Random Forest Regressor), the tool models various hydrogel parameters and provides an intuitive graphical user interface for users.
+The Hydrogel Release Rate Prediction Tool is a Python-based desktop application designed to predict the release rate constant (K h⁻¹) of hydrogels. Utilizing a machine learning model (Random Forest Regressor), the tool models various hydrogel parameters and provides an intuitive graphical user interface for users.exe file download URL: www.alipan.com/s/su5yudxdq9w
 
 ## Key Features
 
