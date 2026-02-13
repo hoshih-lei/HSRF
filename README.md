@@ -2,7 +2,8 @@
 
 ## Project Overview
 
-The Hydrogel Release Rate Prediction Tool is a Python-based desktop application designed to predict the release rate constant (K h⁻¹) of hydrogels. Utilizing a machine learning model (Random Forest Regressor), the tool models various hydrogel parameters and provides an intuitive graphical user interface for users.exe file download URL: www.alipan.com/s/su5yudxdq9w
+The Hydrogel Release Rate Prediction Tool is a Python-based desktop application designed to predict the release rate constant (K h⁻¹) of hydrogels. Utilizing a machine learning model (Random Forest Regressor), the tool models various hydrogel parameters and provides an intuitive graphical user interface for users.
+exe file download URL: www.alipan.com/s/su5yudxdq9w
 
 ## Key Features
 
@@ -64,41 +65,6 @@ See `requirements.txt` file
    pyinstaller --onefile --windowed hydrogel_predictor.py
    ```
 
-3. Executable will be in the `dist` folder
-
-## Data Format Requirements
-
-### Required Data Columns
-
-The program requires the following column names (case-sensitive):
-
-**Numerical Features (12):**
-- `AA` - Acrylic acid content
-- `AMPS` - 2-Acrylamido-2-methylpropanesulfonic acid content
-- `CMC` - Carboxymethyl cellulose content
-- `PAA` - Polyacrylic acid content
-- `PVA` - Polyvinyl alcohol content
-- `CBR` - Cross-linker ratio
-- `RT (℃)` - Reaction temperature
-- `Rti (h)` - Reaction time
-- `DT (℃)` - Drying temperature
-- `UC (%)` - Urea concentration
-- `Rtemp (℃)` - Release temperature
-- `pH-SR` - Release medium pH
-
-**Categorical Features (2):**
-- `CRA` - Cross-linking agent type
-- `ULM` - Monomeric unit type
-
-**Target Variable (1):**
-- `K (h⁻¹)` - Release rate constant
-
-### Data File Structure Example
-```csv
-AA,AMPS,CMC,PAA,PVA,CBR,RT (℃),Rti (h),DT (℃),UC (%),Rtemp (℃),pH-SR,CRA,ULM,K (h⁻¹)
-10.5,2.3,1.2,0.5,3.4,0.2,25,24,40,50,37,7.0,TypeA,Mono,0.045
-...
-```
 
 ## Usage Instructions
 
