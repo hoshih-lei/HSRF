@@ -38,33 +38,6 @@ exe file download URL: www.alipan.com/s/su5yudxdq9w
 ### Python Dependencies
 See `requirements.txt` file
 
-## Installation Guide
-
-### Method 1: Run from Source Code
-
-1. Clone or download project files
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Run the application:
-   ```bash
-   python hydrogel_predictor.py
-   ```
-
-### Method 2: Package with PyInstaller (Optional)
-
-1. Install PyInstaller:
-   ```bash
-   pip install pyinstaller
-   ```
-
-2. Create executable:
-   ```bash
-   pyinstaller --onefile --windowed hydrogel_predictor.py
-   ```
-
 
 ## Usage Instructions
 
@@ -105,16 +78,6 @@ rf_params = {
 }
 ```
 
-## Project File Structure
-```
-hydrogel-predictor/
-├── hydrogel_predictor.py    # Main program file
-├── requirements.txt         # Dependency list
-├── README.md               # Documentation
-├── data/                   # Data directory
-│   └── data.csv           # Default dataset
-└── ...                    # Other resource files
-```
 
 ## Troubleshooting
 
